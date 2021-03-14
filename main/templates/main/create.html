@@ -1,28 +1,32 @@
 {% extends "main/template.html" %}
 
 {% block title %}
-Sample Form
+TLP | Modify Absence Record
+
 {% endblock %}
 
 {% block body %}
 <form method="post" action="/create/">
     {% csrf_token %}
-    <table>
-        <tr>
-            <th><h1>Student Name</h1></th>
-            <th><h1>Class </h1></th>
-            <th><h1>Board</h1></th>
-            <th> <h1>Number of Absences</h1></th>
-            <th> <h1>Absent? </h1></th>
-        </tr>
+    <table class= "table">
+    <thead>
 
         <tr>
-            <th colspan="5"> <h2>Class 6</h2></th>
+            <th scope="col"><h1>Student Name</h1></th>
+            <th scope="col"><h1>Class </h1></th>
+            <th scope="col"><h1>Board</h1></th>
+            <th scope="col"> <h1>Number of Absences</h1></th>
+            <th scope="col"> <h1>Absent? </h1></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan="5" scope="col"> <h2>Class 6</h2></th>
         </tr>
 
         {% for student in six %}
          <tr>
-             <td>{{student.name}}</td>
+             <th scope="row">{{student.name}}</th>
              <td>{{student.std}}</td>
              <td>{{student.board}}</td>
              <td>{{student.num_absent}}</td>
@@ -31,12 +35,12 @@ Sample Form
         {% endfor %}
 
         <tr>
-            <th colspan="5"> <h2>Class 7</h2></th>
+            <th colspan="5" scope="col"> <h2>Class 7</h2></th>
         </tr>
-        
+
         {% for student in seven %}
          <tr>
-             <td>{{student.name}}</td>
+             <th scope="row">{{student.name}}</th>
              <td>{{student.std}}</td>
              <td>{{student.board}}</td>
              <td>{{student.num_absent}}</td>
@@ -45,12 +49,12 @@ Sample Form
         {% endfor %}
 
         <tr>
-            <th colspan="5"> <h2>Class 8</h2></th>
+            <th colspan="5" scope="col"> <h2>Class 8</h2></th>
         </tr>
-        
+
         {% for student in eight %}
          <tr>
-             <td>{{student.name}}</td>
+             <th scope="row">{{student.name}}</th>
              <td>{{student.std}}</td>
              <td>{{student.board}}</td>
              <td>{{student.num_absent}}</td>
@@ -59,12 +63,12 @@ Sample Form
         {% endfor %}
 
         <tr>
-            <th colspan="5"> <h2>Class 9</h2></th>
+            <th colspan="5" scope="col"> <h2>Class 9</h2></th>
         </tr>
-        
+
         {% for student in nine %}
          <tr>
-             <td>{{student.name}}</td>
+             <th scope="row">{{student.name}}</th>
              <td>{{student.std}}</td>
              <td>{{student.board}}</td>
              <td>{{student.num_absent}}</td>
@@ -73,21 +77,22 @@ Sample Form
         {% endfor %}
 
         <tr>
-            <th colspan="5"> <h2>Class 10</h2></th>
+            <th colspan="5" scope="col"> <h2>Class 10</h2></th>
         </tr>
-        
+
         {% for student in ten %}
          <tr>
-             <td>{{student.name}}</td>
+             <th scope="row">{{student.name}}</th>
              <td>{{student.std}}</td>
              <td>{{student.board}}</td>
              <td>{{student.num_absent}}</td>
              <td> <input type="checkbox", value= "selected", name= "c{{student.id}}"> </td>
          </tr>
         {% endfor %}
+    </tbody>
     </table>
     <br>
     <br>
-    <button type="submit", name= "submit", value="submit">Submit</button>
+    <center><button class="btn btn-primary" type="submit", name= "submit", value="submit">Submit</button></center>
 </form>
 {% endblock %}
